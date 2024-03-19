@@ -10,6 +10,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: threads
-      POSTGRES_PASSWORD: threads 
+      POSTGRES_PASSWORD: postgres 
 volumes:
   postgres_data:

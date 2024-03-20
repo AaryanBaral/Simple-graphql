@@ -17,10 +17,19 @@ export interface UserTokenPayload{
 
 class UserService{
 
+    public static decodeToken(token:string){
+        const user = JWT.verify(token,JWT_SECRET);
+        return user;
+    }
+
+    public static async getUserByID(id:string){
+        return prismaClient.user.findUnique({where:{id}});
+    }
+
     private static  hashPasssword(salt:string,password:string){
         const hashedPassword =createHmac('sha256',salt)
         .update(password)
-        .digest('hex');
+        .digest('hex'); 
         return hashedPassword;
 
     }

@@ -8,6 +8,13 @@ const queries = {
             password:payload.password
         })
         return token;
+    },
+    getCurrentLoggedInUser:async(_:any,parameters:any,context:any)=>{
+        if(context && context.user){
+            const user = await UserService.getUserByID(context.user.id);
+            return user;
+        }
+        return "failed";
     }
 }
 
